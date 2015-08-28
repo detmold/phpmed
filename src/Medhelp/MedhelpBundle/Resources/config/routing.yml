@@ -1,0 +1,3 @@
+medhelp_medhelp_homepage:
+    path:     /
+    defaults: { _controller: MedhelpMedhelpBundle:Default:index }
