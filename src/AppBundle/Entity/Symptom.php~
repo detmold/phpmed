@@ -35,6 +35,11 @@ class Symptom {
     private $disease;
 
     /**
+     * @ORM\ManyToMany(targetEntity="Diagnosis", mappedBy="symptom")
+     */
+    private $diagnosis;
+
+    /**
      * Get id
      *
      * @return integer

@@ -20,8 +20,8 @@ class Disease {
     private $name;
 
     /**
-    * @ORM\Column(type="text")
-    */
+     * @ORM\Column(type="text")
+     */
     private $description;
 
     /**
@@ -34,6 +34,11 @@ class Disease {
      * @ORM\JoinTable(name="Disease_Symptom")
      */
     private $symptom;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Diagnosis", mappedBy="disease")
+     */
+    private $diagnosis;
 
     /**
      * Get id
@@ -152,5 +157,38 @@ class Disease {
     public function getTags()
     {
         return $this->tags;
+    }
+
+    /**
+     * Add diagnosis
+     *
+     * @param \AppBundle\Entity\Diagnosis $diagnosis
+     * @return Disease
+     */
+    public function addDiagnosi(\AppBundle\Entity\Diagnosis $diagnosis)
+    {
+        $this->diagnosis[] = $diagnosis;
+
+        return $this;
+    }
+
+    /**
+     * Remove diagnosis
+     *
+     * @param \AppBundle\Entity\Diagnosis $diagnosis
+     */
+    public function removeDiagnosi(\AppBundle\Entity\Diagnosis $diagnosis)
+    {
+        $this->diagnosis->removeElement($diagnosis);
+    }
+
+    /**
+     * Get diagnosis
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getDiagnosis()
+    {
+        return $this->diagnosis;
     }
 }

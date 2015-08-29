@@ -7,28 +7,40 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity
  */
 class Diagnosis {
-     /**
+    /**
      * @ORM\Column(type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-     private $id;
+    private $id;
 
-     /**
+    /**
      * @ORM\Column(type="date")
      */
-     private $date;
+    private $date;
 
-     /**
+    /**
      * @ORM\Column(type="text")
      */
-     private $prescription;
+    private $prescription;
 
-     /**
+    /**
      * @ORM\ManyToOne(targetEntity="Patient", inversedBy="diagnoses")
      * @ORM\JoinColumn(name="patient_id", referencedColumnName="id")
      */
-     private $patient;
+    private $patient;
+
+     /**
+      * @ORM\ManyToMany(targetEntity="Disease", inversedBy="diagnosis")
+      * @ORM\JoinTable(name="Diagnosis_Disease")
+      */
+     private $disease;
+
+     /**
+      * @ORM\ManyToMany(targetEntity="Symptom", inversedBy="diagnosis")
+      * @ORM\JoinTable(name="Diagnosis_Symptom")
+      */
+     private $symptom;
 
     /**
      * Get id
@@ -107,5 +119,45 @@ class Diagnosis {
     public function getPatient()
     {
         return $this->patient;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->disease = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add disease
+     *
+     * @param \AppBundle\Entity\Disease $disease
+     * @return Diagnosis
+     */
+    public function addDisease(\AppBundle\Entity\Disease $disease)
+    {
+        $this->disease[] = $disease;
+
+        return $this;
+    }
+
+    /**
+     * Remove disease
+     *
+     * @param \AppBundle\Entity\Disease $disease
+     */
+    public function removeDisease(\AppBundle\Entity\Disease $disease)
+    {
+        $this->disease->removeElement($disease);
+    }
+
+    /**
+     * Get disease
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDisease()
+    {
+        return $this->disease;
     }
 }

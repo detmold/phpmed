@@ -35,6 +35,11 @@ class Symptom {
     private $disease;
 
     /**
+     * @ORM\ManyToMany(targetEntity="Diagnosis", mappedBy="symptom")
+     */
+    private $diagnosis;
+
+    /**
      * Get id
      *
      * @return integer
@@ -151,5 +156,38 @@ class Symptom {
     public function getTags()
     {
         return $this->tags;
+    }
+
+    /**
+     * Add diagnosis
+     *
+     * @param \AppBundle\Entity\Diagnosis $diagnosis
+     * @return Symptom
+     */
+    public function addDiagnosi(\AppBundle\Entity\Diagnosis $diagnosis)
+    {
+        $this->diagnosis[] = $diagnosis;
+
+        return $this;
+    }
+
+    /**
+     * Remove diagnosis
+     *
+     * @param \AppBundle\Entity\Diagnosis $diagnosis
+     */
+    public function removeDiagnosi(\AppBundle\Entity\Diagnosis $diagnosis)
+    {
+        $this->diagnosis->removeElement($diagnosis);
+    }
+
+    /**
+     * Get diagnosis
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getDiagnosis()
+    {
+        return $this->diagnosis;
     }
 }
