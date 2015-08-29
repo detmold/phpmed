@@ -9,30 +9,45 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 		<!-- Bootstrap -->
 		<link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
+		<link rel="stylesheet" href="{{ asset('css/main.css') }}">
 		
 		<!-- HTML5 Shim and Respond.js add IE8 support of HTML5 elements and media queries -->
 		{% include 'BraincraftedBootstrapBundle::ie8-support.html.twig' %}
     </head>
     <body>
-        {% block body %}
 		<div class="container">
 
 			  <!-- The justified navigation menu is meant for single line per list item.
 				   Multiple lines will require custom code not provided by Bootstrap. -->
 			  <div class="masthead">
-				<h3 class="text-muted">Project name</h3>
-				<nav>
-				  <ul class="nav nav-justified">
-					<li class="active"><a href="#">Home</a></li>
-					<li><a href="{{ path('fos_user_profile_show') }}">Profil</a></li>
-					<li><a href="{{ path('fos_user_profile_edit') }}">Edytuj profil</a></li>
-					<li><a href="{{ path('fos_user_security_logout') }}">Wyloguj</a></li>
-					<li><a href="#">About</a></li>
-					<li><a href="#">Contact</a></li>
-				  </ul>
-				</nav>
+				{% block header %}
+					<nav class="navbar navbar-inverse navbar-fixed-top">
+						  <div class="container">
+							<div class="navbar-header">
+							  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+								<span class="sr-only">Toggle navigation</span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							  </button>
+							  <a class="navbar-brand" href="{{ path('medhelp_medhelp_homepage') }}">Med Help</a>
+							</div>
+							<div id="navbar" class="collapse navbar-collapse">
+							  <ul class="nav navbar-nav">
+								<li class="active"><a href="{{ path('medhelp_medhelp_homepage') }}">Strona główna</a></li>
+								{% if app.user %}
+									<li><a href="{{ path('fos_user_profile_show') }}">Profil</a></li>
+									<li><a href="{{ path('fos_user_profile_edit') }}">Edytuj profil</a></li>
+									<li><a href="{{ path('fos_user_security_logout') }}">Wyloguj</a></li>
+								{% endif %}
+							  </ul>
+							</div><!--/.nav-collapse -->
+						  </div>
+						</nav>
+				{% endblock %}
 			  </div>
 
+			  {% block body %}
 			  <!-- Jumbotron -->
 			  <div class="jumbotron">
 				<h1>Marketing stuff!</h1>
@@ -65,9 +80,10 @@
 			  <footer class="footer">
 				<p>&copy; Company 2014</p>
 			  </footer>
+			  {% endblock %}
 
 			</div> <!-- /container -->
-		{% endblock %}
+		
         {% block javascripts %}
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 		<script>window.jQuery || document.write('<script src="{{ asset('js/jquery.js') }}"><\/script>')</script>
