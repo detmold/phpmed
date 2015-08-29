@@ -1,5 +1,5 @@
 <?php
-// src\AppBundle\Entity\Symptom.php
+
 namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -12,27 +12,27 @@ class Symptom {
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    protected $id;
-
-    /**
-     * @ORM\ManyToMany(targetEntity="Disease", mappedBy="symptom")
-     */
-    protected $disease;
+    private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    protected $name;
+    private $name;
 
     /**
     * @ORM\Column(type="text")
     */
-    protected $description;
+    private $description;
 
     /**
      * @ORM\Column(type="string", length=255);
      */
-    protected $tags;
+    private $tags;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Disease", mappedBy="symptom")
+     */
+    private $disease;
 
     /**
      * Get id
@@ -105,5 +105,51 @@ class Symptom {
     public function getDisease()
     {
         return $this->disease;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     * @return Symptom
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set tags
+     *
+     * @param string $tags
+     * @return Symptom
+     */
+    public function setTags($tags)
+    {
+        $this->tags = $tags;
+
+        return $this;
+    }
+
+    /**
+     * Get tags
+     *
+     * @return string
+     */
+    public function getTags()
+    {
+        return $this->tags;
     }
 }
