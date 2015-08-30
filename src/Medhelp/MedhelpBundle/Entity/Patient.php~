@@ -1,6 +1,8 @@
 <?php
+// src/Medhelp/MedhelpBundle/Entity/Patient.php
 
-namespace AppBundle\Entity;
+namespace Medhelp\MedhelpBundle\Entity;
+
 use Doctrine\ORM\Mapping as ORM;
 
 /**

@@ -1,6 +1,8 @@
 <?php
+// src/Medhelp/MedhelpBundle/Entity/Diagnosis.php
 
-namespace AppBundle\Entity;
+namespace Medhelp\MedhelpBundle\Entity;
+
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -159,5 +161,38 @@ class Diagnosis {
     public function getDisease()
     {
         return $this->disease;
+    }
+
+    /**
+     * Add symptom
+     *
+     * @param \AppBundle\Entity\Symptom $symptom
+     * @return Diagnosis
+     */
+    public function addSymptom(\AppBundle\Entity\Symptom $symptom)
+    {
+        $this->symptom[] = $symptom;
+
+        return $this;
+    }
+
+    /**
+     * Remove symptom
+     *
+     * @param \AppBundle\Entity\Symptom $symptom
+     */
+    public function removeSymptom(\AppBundle\Entity\Symptom $symptom)
+    {
+        $this->symptom->removeElement($symptom);
+    }
+
+    /**
+     * Get symptom
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSymptom()
+    {
+        return $this->symptom;
     }
 }

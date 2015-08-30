@@ -1,6 +1,8 @@
 <?php
+// src/Medhelp/MedhelpBundle/Entity/Diagnosis.php
 
-namespace AppBundle\Entity;
+namespace Medhelp\MedhelpBundle\Entity;
+
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -187,7 +189,7 @@ class Diagnosis {
     /**
      * Get symptom
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getSymptom()
     {
