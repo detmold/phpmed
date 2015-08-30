@@ -1,3 +1,7 @@
 medhelp_medhelp_homepage:
     path:     /
     defaults: { _controller: MedhelpMedhelpBundle:Default:index }
+medhelp_medhelp_annotations:
+    resource: "@MedhelpMedhelpBundle/Controller/"
+    type:     annotation
+    prefix:   /
