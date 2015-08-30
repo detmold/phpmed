@@ -33,7 +33,10 @@ class Disease {
 
     /**
      * @ORM\ManyToMany(targetEntity="Symptom", inversedBy="disease")
-     * @ORM\JoinTable(name="Disease_Symptom")
+     * @ORM\JoinTable(name="Disease_Symptom",
+     *      joinColumns={@ORM\JoinColumn(name="disease_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="symptom_id", referencedColumnName="id")}
+     *      )
      */
     private $symptom;
 
@@ -41,11 +44,19 @@ class Disease {
      * @ORM\ManyToMany(targetEntity="Diagnosis", mappedBy="disease")
      */
     private $diagnosis;
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->symptom = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->diagnosis = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
      *
-     * @return integer
+     * @return integer 
      */
     public function getId()
     {
@@ -68,7 +79,7 @@ class Disease {
     /**
      * Get name
      *
-     * @return string
+     * @return string 
      */
     public function getName()
     {
@@ -91,51 +102,11 @@ class Disease {
     /**
      * Get description
      *
-     * @return string
+     * @return string 
      */
     public function getDescription()
     {
         return $this->description;
-    }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->symptom = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Add symptom
-     *
-     * @param \AppBundle\Entity\Symptom $symptom
-     * @return Disease
-     */
-    public function addSymptom(\AppBundle\Entity\Symptom $symptom)
-    {
-        $this->symptom[] = $symptom;
-
-        return $this;
-    }
-
-    /**
-     * Remove symptom
-     *
-     * @param \AppBundle\Entity\Symptom $symptom
-     */
-    public function removeSymptom(\AppBundle\Entity\Symptom $symptom)
-    {
-        $this->symptom->removeElement($symptom);
-    }
-
-    /**
-     * Get symptom
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getSymptom()
-    {
-        return $this->symptom;
     }
 
     /**
@@ -154,7 +125,7 @@ class Disease {
     /**
      * Get tags
      *
-     * @return string
+     * @return string 
      */
     public function getTags()
     {
@@ -162,12 +133,45 @@ class Disease {
     }
 
     /**
-     * Add diagnosis
+     * Add symptom
      *
-     * @param \AppBundle\Entity\Diagnosis $diagnosis
+     * @param \Medhelp\MedhelpBundle\Entity\Symptom $symptom
      * @return Disease
      */
-    public function addDiagnosi(\AppBundle\Entity\Diagnosis $diagnosis)
+    public function addSymptom(\Medhelp\MedhelpBundle\Entity\Symptom $symptom)
+    {
+        $this->symptom[] = $symptom;
+
+        return $this;
+    }
+
+    /**
+     * Remove symptom
+     *
+     * @param \Medhelp\MedhelpBundle\Entity\Symptom $symptom
+     */
+    public function removeSymptom(\Medhelp\MedhelpBundle\Entity\Symptom $symptom)
+    {
+        $this->symptom->removeElement($symptom);
+    }
+
+    /**
+     * Get symptom
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getSymptom()
+    {
+        return $this->symptom;
+    }
+
+    /**
+     * Add diagnosis
+     *
+     * @param \Medhelp\MedhelpBundle\Entity\Diagnosis $diagnosis
+     * @return Disease
+     */
+    public function addDiagnosi(\Medhelp\MedhelpBundle\Entity\Diagnosis $diagnosis)
     {
         $this->diagnosis[] = $diagnosis;
 
@@ -177,9 +181,9 @@ class Disease {
     /**
      * Remove diagnosis
      *
-     * @param \AppBundle\Entity\Diagnosis $diagnosis
+     * @param \Medhelp\MedhelpBundle\Entity\Diagnosis $diagnosis
      */
-    public function removeDiagnosi(\AppBundle\Entity\Diagnosis $diagnosis)
+    public function removeDiagnosi(\Medhelp\MedhelpBundle\Entity\Diagnosis $diagnosis)
     {
         $this->diagnosis->removeElement($diagnosis);
     }
@@ -187,7 +191,7 @@ class Disease {
     /**
      * Get diagnosis
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return \Doctrine\Common\Collections\Collection 
      */
     public function getDiagnosis()
     {
