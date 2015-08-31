@@ -12,7 +12,11 @@ class DiagnosisController extends Controller
      */
     public function searchAction()
     {
-        return $this->render('MedhelpMedhelpBundle:Diagnose:search.html.twig');
+        $symptoms = $this->getDoctrine()->getRepository('MedhelpMedhelpBundle:Symptom')->findAll();
+
+        return $this->render('MedhelpMedhelpBundle:Diagnose:search.html.twig', array(
+            'symptoms' => $symptoms
+        ));
     }
 
     /**
@@ -20,13 +24,13 @@ class DiagnosisController extends Controller
      */
     public function resultAction()
     {
-        $symptomsSearched = explode(' ', $_GET["symptoms"]);
+        $symptomsSearched = explode(';', $_GET["symptoms"]);
 
         $result = array();
         foreach ($symptomsSearched as $symptomSearched) {
             $symptom = $this->getDoctrine()->getRepository('MedhelpMedhelpBundle:Symptom')->findOneByName($symptomSearched);
             foreach ($symptom->getDisease() as $disease) {
-                array_push($result, $disease); // Temporary for debug
+                array_push($result, $disease);
             }
         }
 

@@ -9,9 +9,9 @@
         <h3 class="panel-title">{{ disease.name }}</h3>
     </div>
     <div class="panel-body">
-        Description: {{ disease.description }}
+        <span class="text-primary">Description:</span> <span class="text-muted">{{ disease.description }}</span>
         <br />
-        Tags: {{ disease.tags }}
+        <span class="text-info">Tags:</span> <span class="text-muted">{{ disease.tags }}</span>
     </div>
 </div>
 {% else %}
