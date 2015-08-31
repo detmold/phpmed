@@ -1,1 +1,11 @@
-{{diseases}}
+{% extends '::base.html.twig' %}
+
+{% block body %}
+<h1>Results:</h1>
+{% for disease in diseases %}
+    {{ disease.name }}
+    <br/>
+{% else %}
+    No disease have been found.
+{% endfor %}
+{% endblock body %}

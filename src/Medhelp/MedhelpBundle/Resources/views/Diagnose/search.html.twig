@@ -1,4 +1,16 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
 <form action="result" method="GET">
     <input type="text" name="symptoms">
-    <input type="submit" value="Sumbit">
+    <input type="submit" value="Submit">
 </form>
+
+<button class="btn btn-primary" onclick="addSymptom()">+</button>
+
+<script type="text/javascript">
+    var addSymptom = function() {
+        alert(1);
+    }
+</script>
+{% endblock body %}
