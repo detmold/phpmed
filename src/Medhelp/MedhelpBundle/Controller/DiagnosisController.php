@@ -61,4 +61,12 @@ class DiagnosisController extends Controller
             'diseases' => $result,
         ));
     }
+	
+	/**
+     * @Route("/combo")
+     */
+    public function comboAction()
+    {
+        return $this->render('MedhelpMedhelpBundle:Diagnose:combo.html.twig');
+    }
 }

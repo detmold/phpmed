@@ -10,6 +10,7 @@
 		<!-- Bootstrap -->
 		<link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
 		<link rel="stylesheet" href="{{ asset('css/main.css') }}">
+		<link rel="stylesheet" href="{{ asset('css/bootstrap-combobox.css') }}">
 		
 		<!-- HTML5 Shim and Respond.js add IE8 support of HTML5 elements and media queries -->
 		{% include 'BraincraftedBootstrapBundle::ie8-support.html.twig' %}
@@ -88,6 +89,13 @@
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 		<script>window.jQuery || document.write('<script src="{{ asset('js/jquery.js') }}"><\/script>')</script>
 		<script src="{{ asset('js/bootstrap.js') }}"></script>
+		<script src="{{ asset('js/bootstrap-combobox.js') }}"></script>
+		<script src="{{ asset('js/main.js') }}"></script>
+		<script type="text/javascript">
+		  $(document).ready(function(){
+			$('.combobox').combobox();
+		  });
+		</script>
 		{% endblock %}
     </body>
 </html>
