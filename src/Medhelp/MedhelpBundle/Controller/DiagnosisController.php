@@ -26,16 +26,20 @@ class DiagnosisController extends Controller
     {
         $symptomsSearched = explode(';', $_GET["symptoms"]);
 
-        $result = array();
+        $diseases = array();
         foreach ($symptomsSearched as $symptomSearched) {
             $symptom = $this->getDoctrine()->getRepository('MedhelpMedhelpBundle:Symptom')->findOneByName($symptomSearched);
+
+            $symptomDiseases = array();
             foreach ($symptom->getDisease() as $disease) {
-                array_push($result, $disease);
+                $symptomDiseases[$disease->getName()] = $disease;
             }
+
+            $diseases = array_merge($diseases, $symptomDiseases);
         }
 
         return $this->render('MedhelpMedhelpBundle:Diagnose:result.html.twig', array(
-            'diseases' => $result
+            'diseases' => $diseases
         ));
     }
 }
