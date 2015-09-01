@@ -10,6 +10,9 @@
                 <th>#</th>
                 <th>First Name</th>
                 <th>Last Name</th>
+				<th>Show</th>
+                <th>Edit</th>
+				<th>Delete</th>
             </tr>
         </thead>
         <tbody>
@@ -18,6 +21,9 @@
                 <td>{{ patient.id }}</td>
                 <td>{{ patient.firstName }}</td>
                 <td>{{ patient.lastName }}</td>
+				<td><a href="{{ path('patient_show', { 'id': patient.id }) }}">show</a></td>
+				<td><a href="{{ path('patient_edit', { 'id': patient.id }) }}">edit</a></td>
+				<td><a href="{{ path('patient_delete', { 'id': patient.id }) }}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
             </tr>
             {% else %}
                 No patients have been found.
