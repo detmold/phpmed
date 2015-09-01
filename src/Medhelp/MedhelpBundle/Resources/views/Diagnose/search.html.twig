@@ -1,4 +1,24 @@
-<form action="result" method="GET">
-    <input type="text" name="symptoms">
-    <input type="submit" value="Sumbit">
-</form>
+{% extends '::base.html.twig' %}
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/form.css') }}">
+{% endblock %}
+{% block body %}
+<div class="container">
+    <form class="form-signin" action="result" method="GET">
+        <input class="form-control" type="text" name="symptoms" placeholder="Enter patients symptoms">
+        <br />
+        <input class="btn btn-info btn-block" type="submit" value="Diagnose">
+    </form>
+	<br />
+	<div class="text-center">
+	<span class="text-info">Known symptoms: </span>
+	<span class="text-muted">
+	{% for symptom in symptoms %}
+		{{ symptom.name }},
+	{% else %}
+		No symptom have been found.
+	{% endfor %}
+	</span>
+	</div>
+</div>
+{% endblock body %}
