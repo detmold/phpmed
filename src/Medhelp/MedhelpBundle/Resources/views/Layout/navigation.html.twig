@@ -11,24 +11,24 @@
         </div>
         <div class="collapse navbar-collapse" id="navbar">
             <ul class="nav navbar-nav">
-                <li class="active">
+                <li class="{% if app.request.attributes.get('_route') == 'medhelp_medhelp_homepage' %}active{% endif %}">
                     <a href="{{ path('medhelp_medhelp_homepage') }}">Homepage</a>
                 </li>
                 {% if app.user %}
-                <li>
+                <li class="{% if app.request.attributes.get('_route') == 'medhelp_medhelp_diagnosis_search' %}active{% endif %}">
                     <a href="{{ path('medhelp_medhelp_diagnosis_search') }}">Diagnose</a>
                 </li>
                 {% endif %}
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 {% if app.user %}
-                <li>
+                <li class="{% if app.request.attributes.get('_route') == 'fos_user_profile_show' %}active{% endif %}">
                     <a href="{{ path('fos_user_profile_show') }}">My Profile</a>
                 </li>
-                <li>
+                <li class="{% if app.request.attributes.get('_route') == 'fos_user_profile_edit' %}active{% endif %}">
                     <a href="{{ path('fos_user_profile_edit') }}">Edit Profile</a>
                 </li>
-                <li>
+                <li class="{% if app.request.attributes.get('_route') == 'fos_user_security_logout' %}active{% endif %}">
                     <a href="{{ path('fos_user_security_logout') }}">Log Out</a>
                 </li>
                 {% endif %}
