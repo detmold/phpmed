@@ -44,6 +44,11 @@ class Disease {
      * @ORM\ManyToMany(targetEntity="Diagnosis", mappedBy="disease")
      */
     private $diagnosis;
+	
+	/**
+     * @ORM\Column(type="integer");
+     */
+    private $accuracy;
     /**
      * Constructor
      */
@@ -196,5 +201,28 @@ class Disease {
     public function getDiagnosis()
     {
         return $this->diagnosis;
+    }
+	
+	/**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getAccuracy()
+    {
+        return $this->accuracy;
+    }
+
+    /**
+     * Set accuracy
+     *
+     * @param integer $accuracy
+     * @return Disease
+     */
+    public function setAccuracy($accuracy)
+    {
+        $this->accuracy = $accuracy;
+
+        return $this;
     }
 }

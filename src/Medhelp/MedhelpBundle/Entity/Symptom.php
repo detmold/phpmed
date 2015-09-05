@@ -84,10 +84,10 @@ class Symptom {
     /**
      * Add disease
      *
-     * @param \AppBundle\Entity\Disease $disease
+     * @param \Medhelp\MedhelpBundle\Entity\Disease $disease
      * @return Symptom
      */
-    public function addDisease(\AppBundle\Entity\Disease $disease)
+    public function addDisease(\Medhelp\MedhelpBundle\Entity\Disease $disease)
     {
         $this->disease[] = $disease;
 
@@ -97,9 +97,9 @@ class Symptom {
     /**
      * Remove disease
      *
-     * @param \AppBundle\Entity\Disease $disease
+     * @param \Medhelp\MedhelpBundle\Entity\Disease $disease
      */
-    public function removeDisease(\AppBundle\Entity\Disease $disease)
+    public function removeDisease(\Medhelp\MedhelpBundle\Entity\Disease $disease)
     {
         $this->disease->removeElement($disease);
     }
@@ -163,10 +163,10 @@ class Symptom {
     /**
      * Add diagnosis
      *
-     * @param \AppBundle\Entity\Diagnosis $diagnosis
+     * @param \Medhelp\MedhelpBundle\Entity\Diagnosis $diagnosis
      * @return Symptom
      */
-    public function addDiagnosi(\AppBundle\Entity\Diagnosis $diagnosis)
+    public function addDiagnosi(\Medhelp\MedhelpBundle\Entity\Diagnosis $diagnosis)
     {
         $this->diagnosis[] = $diagnosis;
 
@@ -176,9 +176,9 @@ class Symptom {
     /**
      * Remove diagnosis
      *
-     * @param \AppBundle\Entity\Diagnosis $diagnosis
+     * @param \Medhelp\MedhelpBundle\Entity\Diagnosis $diagnosis
      */
-    public function removeDiagnosi(\AppBundle\Entity\Diagnosis $diagnosis)
+    public function removeDiagnosi(\Medhelp\MedhelpBundle\Entity\Diagnosis $diagnosis)
     {
         $this->diagnosis->removeElement($diagnosis);
     }

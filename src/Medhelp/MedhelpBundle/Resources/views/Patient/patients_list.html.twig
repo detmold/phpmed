@@ -1,0 +1,35 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+<div class="col-sm-9 col-sm-offset-2 col-md-10 col-md-offset-1 main">
+<h2 class="sub-header">Patients</h2>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+				<th>Show</th>
+                <th>Edit</th>
+				<th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for patient in patients %}
+            <tr>
+                <td>{{ patient.id }}</td>
+                <td>{{ patient.firstName }}</td>
+                <td>{{ patient.lastName }}</td>
+				<td><a href="{{ path('patient_show', { 'id': patient.id }) }}">show</a></td>
+				<td><a href="{{ path('patient_edit', { 'id': patient.id }) }}">edit</a></td>
+				<td><a href="{{ path('patient_delete', { 'id': patient.id }) }}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
+            </tr>
+            {% else %}
+                No patients have been found.
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+</div>
+{% endblock body %}

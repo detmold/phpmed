@@ -97,10 +97,10 @@ class Patient {
     /**
      * Add diagnoses
      *
-     * @param \AppBundle\Entity\Diagnosis $diagnoses
+     * @param \Medhelp\MedhelpBundle\Entity\Diagnosis $diagnoses
      * @return Patient
      */
-    public function addDiagnosis(\AppBundle\Entity\Diagnosis $diagnoses)
+    public function addDiagnosis(\Medhelp\MedhelpBundle\Entity\Diagnosis $diagnoses)
     {
         $this->diagnoses[] = $diagnoses;
 
@@ -110,9 +110,9 @@ class Patient {
     /**
      * Remove diagnoses
      *
-     * @param \AppBundle\Entity\Diagnosis $diagnoses
+     * @param \Medhelp\MedhelpBundle\Entity\Diagnosis $diagnoses
      */
-    public function removeDiagnosis(\AppBundle\Entity\Diagnosis $diagnoses)
+    public function removeDiagnosis(\Medhelp\MedhelpBundle\Entity\Diagnosis $diagnoses)
     {
         $this->diagnoses->removeElement($diagnoses);
     }

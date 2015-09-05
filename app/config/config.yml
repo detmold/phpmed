@@ -46,7 +46,7 @@ assetic:
     filters:
         less:
             node:       C:\Program Files\nodejs\node
-            node_paths: [C:\Users\piotr\AppData\Roaming\npm\node_modules]
+            node_paths: [%kernel.root_dir%\..\node_modules]
             apply_to: "\.less$"
         cssrewrite: ~
         #closure:

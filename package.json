@@ -1,0 +1,19 @@
+{
+  "name": "medhelp",
+  "version": "1.0.0",
+  "description": "medhelp =======",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://Pietrzmat@bitbucket.org/Pietrzmat/medhelp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/Pietrzmat/medhelp#readme",
+  "devDependencies": {
+    "less": "^2.5.1"
+  }
+}

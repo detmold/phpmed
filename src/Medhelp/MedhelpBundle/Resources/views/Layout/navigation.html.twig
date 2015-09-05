@@ -1,0 +1,45 @@
+<nav class="navbar navbar-default navbar-static-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button aria-controls="navbar" aria-expanded="false" class="navbar-toggle collapsed" data-target="#navbar" data-toggle="collapse" type="button">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{{ path('medhelp_medhelp_homepage') }}">MedHelp</a>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar">
+            <ul class="nav navbar-nav">
+                <li class="{% if app.request.attributes.get('_route') == 'medhelp_medhelp_homepage' %}active{% endif %}">
+                    <a href="{{ path('medhelp_medhelp_homepage') }}">Homepage</a>
+                </li>
+                {% if app.user %}
+   
+                <li class="{% if app.request.attributes.get('_route') == 'medhelp_medhelp_diagnosis_search' %}active{% endif %}">
+                    <a href="{{ path('medhelp_medhelp_diagnosis_search') }}">Diagnose</a>
+                </li>
+                <li class="{% if app.request.attributes.get('_route') == 'patient' %}active{% endif %}">
+                    <a href="{{ path('patient') }}">Patients</a>
+                </li>
+                {% endif %}
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                {% if app.user %}
+
+                <li class="{% if app.request.attributes.get('_route') == 'fos_user_profile_show' %}active{% endif %}">
+                    <a href="{{ path('fos_user_profile_show') }}">My Profile</a>
+                </li>
+
+                <li class="{% if app.request.attributes.get('_route') == 'fos_user_profile_edit' %}active{% endif %}">
+                    <a href="{{ path('fos_user_profile_edit') }}">Edit Profile</a>
+                </li>
+
+                <li class="{% if app.request.attributes.get('_route') == 'fos_user_security_logout' %}active{% endif %}">
+                    <a href="{{ path('fos_user_security_logout') }}">Log Out</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>
