@@ -9,7 +9,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Medhelp\MedhelpBundle\Entity\Diagnosis;
 use Medhelp\MedhelpBundle\Form\DiagnosisType;
-use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
  * Diagnosis controller.
@@ -18,7 +17,8 @@ use Symfony\Component\Validator\Constraints\DateTime;
  */
 class DiagnosisController extends Controller
 {
-	 /**
+
+	/**
      * @Route("/diagnose")
      */
     public function searchAction()
@@ -88,7 +88,7 @@ class DiagnosisController extends Controller
     {
         return $this->render('MedhelpMedhelpBundle:Diagnose:combo.html.twig');
     }
-
+	
     /**
      * Lists all Diagnosis entities.
      *

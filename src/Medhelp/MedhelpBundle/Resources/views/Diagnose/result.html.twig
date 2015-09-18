@@ -26,13 +26,11 @@
 {% endfor %}
 
 <div class="panel panel-default">
-	{% if patients is not empty %}
-		{% include 'MedhelpMedhelpBundle:Diagnosis:new.html.twig' %}
+	{% if diseases is not empty %}
+		<div class="panel panel-default">
+			{% include 'MedhelpMedhelpBundle:Diagnosis:new.html.twig' %}
+		</div>
 	{% else %}
-	<div class="panel-body">
-		No patients have been found.
-	</div>
 	{% endif %}
-</div>
 
 {% endblock body %}
