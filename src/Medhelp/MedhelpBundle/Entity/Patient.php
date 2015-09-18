@@ -126,4 +126,8 @@ class Patient {
     {
         return $this->diagnoses;
     }
+	
+	public function __toString() {
+		return $this->lastName . " " . $this->firstName;
+	}
 }

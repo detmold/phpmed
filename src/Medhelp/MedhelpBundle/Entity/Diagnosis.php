@@ -195,4 +195,8 @@ class Diagnosis {
     {
         return $this->symptom;
     }
+	
+	public function __toString() {
+		return $this->prescription;
+	}
 }
