@@ -20,8 +20,19 @@
         <p class="text-info">Tags:</span> <span class="text-muted">{{ disease.tags }}</p>
     </div>
 </div>
+
 {% else %}
     No diseases have been found.
 {% endfor %}
+
+<div class="panel panel-default">
+	{% if patients is not empty %}
+		{% include 'MedhelpMedhelpBundle:Diagnosis:new.html.twig' %}
+	{% else %}
+	<div class="panel-body">
+		No patients have been found.
+	</div>
+	{% endif %}
+</div>
 
 {% endblock body %}

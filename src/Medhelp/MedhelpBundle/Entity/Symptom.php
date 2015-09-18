@@ -192,4 +192,8 @@ class Symptom {
     {
         return $this->diagnosis;
     }
+	
+	public function __toString() {
+		return $this->name;
+	}
 }
