@@ -145,4 +145,73 @@ class Patient {
 	public function __toString() {
 		return $this->lastName . " " . $this->firstName;
 	}
+
+    /**
+     * Set mobile
+     *
+     * @param integer $mobile
+     * @return Patient
+     */
+    public function setMobile($mobile)
+    {
+        $this->mobile = $mobile;
+
+        return $this;
+    }
+
+    /**
+     * Get mobile
+     *
+     * @return integer 
+     */
+    public function getMobile()
+    {
+        return $this->mobile;
+    }
+
+    /**
+     * Set pesel
+     *
+     * @param integer $pesel
+     * @return Patient
+     */
+    public function setPesel($pesel)
+    {
+        $this->pesel = $pesel;
+
+        return $this;
+    }
+
+    /**
+     * Get pesel
+     *
+     * @return integer 
+     */
+    public function getPesel()
+    {
+        return $this->pesel;
+    }
+
+    /**
+     * Set adress
+     *
+     * @param string $adress
+     * @return Patient
+     */
+    public function setAdress($adress)
+    {
+        $this->adress = $adress;
+
+        return $this;
+    }
+
+    /**
+     * Get adress
+     *
+     * @return string 
+     */
+    public function getAdress()
+    {
+        return $this->adress;
+    }
 }

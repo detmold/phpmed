@@ -103,10 +103,10 @@ class Diagnosis {
     /**
      * Set patient
      *
-     * @param \AppBundle\Entity\Patient $patient
+     * @param \Medhelp\MedhelpBundle\Entity\Patient $patient
      * @return Diagnosis
      */
-    public function setPatient(\AppBundle\Entity\Patient $patient = null)
+    public function setPatient(\Medhelp\MedhelpBundle\Entity\Patient $patient = null)
     {
         $this->patient = $patient;
 
@@ -116,7 +116,7 @@ class Diagnosis {
     /**
      * Get patient
      *
-     * @return \AppBundle\Entity\Patient
+     * @return \Medhelp\MedhelpBundle\Entity\Patient
      */
     public function getPatient()
     {
@@ -133,10 +133,10 @@ class Diagnosis {
     /**
      * Add disease
      *
-     * @param \AppBundle\Entity\Disease $disease
+     * @param \Medhelp\MedhelpBundle\Entity\Disease $disease
      * @return Diagnosis
      */
-    public function addDisease(\AppBundle\Entity\Disease $disease)
+    public function addDisease(\Medhelp\MedhelpBundle\Entity\Disease $disease)
     {
         $this->disease[] = $disease;
 
@@ -146,9 +146,9 @@ class Diagnosis {
     /**
      * Remove disease
      *
-     * @param \AppBundle\Entity\Disease $disease
+     * @param \Medhelp\MedhelpBundle\Entity\Disease $disease
      */
-    public function removeDisease(\AppBundle\Entity\Disease $disease)
+    public function removeDisease(\Medhelp\MedhelpBundle\Entity\Disease $disease)
     {
         $this->disease->removeElement($disease);
     }
@@ -166,10 +166,10 @@ class Diagnosis {
     /**
      * Add symptom
      *
-     * @param \AppBundle\Entity\Symptom $symptom
+     * @param \Medhelp\MedhelpBundle\Entity\Symptom $symptom
      * @return Diagnosis
      */
-    public function addSymptom(\AppBundle\Entity\Symptom $symptom)
+    public function addSymptom(\Medhelp\MedhelpBundle\Entity\Symptom $symptom)
     {
         $this->symptom[] = $symptom;
 
@@ -179,9 +179,9 @@ class Diagnosis {
     /**
      * Remove symptom
      *
-     * @param \AppBundle\Entity\Symptom $symptom
+     * @param \Medhelp\MedhelpBundle\Entity\Symptom $symptom
      */
-    public function removeSymptom(\AppBundle\Entity\Symptom $symptom)
+    public function removeSymptom(\Medhelp\MedhelpBundle\Entity\Symptom $symptom)
     {
         $this->symptom->removeElement($symptom);
     }
@@ -195,4 +195,8 @@ class Diagnosis {
     {
         return $this->symptom;
     }
+	
+	public function __toString() {
+		return $this->prescription;
+	}
 }
