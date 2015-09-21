@@ -1,49 +1,46 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Patient</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+      <h1>Patient</h1>
 
-    <div class="table-responsive">
-		<table class="table table-striped">
-			<tbody>
-				<tr>
-					<th>Id</th>
-					<td>{{ entity.id }}</td>
-				</tr>
-				<tr>
-					<th>Firstname</th>
-					<td>{{ entity.firstName }}</td>
-				</tr>
-				<tr>
-					<th>Lastname</th>
-					<td>{{ entity.lastName }}</td>
-				</tr>
-        <th>Mobile</th>
-        <td>{{ entity.mobile }}</td>
-      </tr>
-      <tr>
-        <th>Pesel</th>
-        <td>{{ entity.pesel }}</td>
-      </tr>
-      <tr>
-        <th>Adress</th>
-        <td>{{ entity.adress }}</td>
-      </tr>
-			</tbody>
-		</table>
-	</div>
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('patient') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('patient_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+      <div class="table-responsive">
+    		<table class="table table-striped">
+    			<tbody>
+    				<tr>
+    					<th>Id</th>
+    					<td>{{ entity.id }}</td>
+    				</tr>
+    				<tr>
+    					<th>Firstname</th>
+    					<td>{{ entity.firstName }}</td>
+    				</tr>
+    				<tr>
+    					<th>Lastname</th>
+    					<td>{{ entity.lastName }}</td>
+    				</tr>
+              <th>Mobile</th>
+              <td>{{ entity.mobile }}</td>
+            </tr>
+            <tr>
+              <th>Pesel</th>
+              <td>{{ entity.pesel }}</td>
+            </tr>
+            <tr>
+              <th>Adress</th>
+              <td>{{ entity.adress }}</td>
+            </tr>
+      		</tbody>
+      	</table>
+    	</div>
+      {{ form(delete_form) }}
+      <br />
+      <a href="{{ path('patient_edit', { 'id': entity.id }) }}">Edit</a>
+      <br/>
+      <a href="{{ path('patient') }}">Back to the list</a>
+    </div>
+  </div>
+</div>
 {% endblock %}
