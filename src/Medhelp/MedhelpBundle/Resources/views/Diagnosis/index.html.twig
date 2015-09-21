@@ -9,9 +9,8 @@
 				<tr>
 					<th>Id</th>
 					<th>Date</th>
-					<th>Prescription</th>
 					<th>Patient</th>
-					<th>Actions</th>
+					<th><span class="pull-right">Actions</span></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -19,29 +18,17 @@
 				<tr>
 					<td><a href="{{ path('diagnosis_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
 					<td>{% if entity.date %}{{ entity.date|date('Y-m-d H:i:s') }}{% endif %}</td>
-					<td>{{ entity.prescription }}</td>
 					<td>{{ entity.patient }}</td>
 					<td>
-					<ul>
-						<li>
-							<a href="{{ path('diagnosis_show', { 'id': entity.id }) }}">show</a>
-						</li>
-						<li>
-							<a href="{{ path('diagnosis_edit', { 'id': entity.id }) }}">edit</a>
-						</li>
-					</ul>
+            <div class="btn-group pull-right">
+						  <a class="btn btn-default" href="{{ path('diagnosis_show', { 'id': entity.id }) }}">show</a>
+						  <a class="btn btn-default" href="{{ path('diagnosis_edit', { 'id': entity.id }) }}">edit</a>
+            </div>
 					</td>
 				</tr>
 			{% endfor %}
 			</tbody>
 		</table>
 	</div>
-
-        <ul>
-        <li>
-            <a href="{{ path('medhelp_medhelp_diagnosis_search') }}">
-                Create a new entry
-            </a>
-        </li>
-    </ul>
+  <a class="btn btn-primary" href="{{ path('medhelp_medhelp_diagnosis_search') }}">Create a new entry</a>
     {% endblock %}
