@@ -46,10 +46,11 @@ class DiagnosisController extends Controller
 			foreach ($symptomsSearched as $symptomSearched) {
 				$accuracy = 0;
 				$symptom = $this->getDoctrine()->getRepository('MedhelpMedhelpBundle:Symptom')->findOneByName($symptomSearched);
-				$entity->addSymptom($symptom);
-	
+				
 				$symptomDiseases = array();
 				if (is_object($symptom)) {
+					$entity->addSymptom($symptom);
+					
 					foreach ($symptom->getDisease() as $disease) {
 						$entity->addDisease($disease);
 						foreach ($disease->getSymptom() as $s) {
