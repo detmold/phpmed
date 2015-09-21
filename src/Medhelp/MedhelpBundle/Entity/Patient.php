@@ -31,6 +31,21 @@ class Patient {
      */
      private $diagnoses;
 
+     /**
+     * @ORM\Column(type="integer")
+     */
+     private $mobile;
+
+     /**
+     * @ORM\Column(type="integer")
+     */
+     private $pesel;
+
+     /**
+     * @ORM\Column(type="string", length=255)
+     */
+     private $adress;
+
     /**
      * Get id
      *
@@ -126,7 +141,7 @@ class Patient {
     {
         return $this->diagnoses;
     }
-	
+
 	public function __toString() {
 		return $this->lastName . " " . $this->firstName;
 	}
