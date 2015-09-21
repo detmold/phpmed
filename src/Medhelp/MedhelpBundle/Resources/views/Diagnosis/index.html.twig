@@ -11,6 +11,8 @@
 					<th>Date</th>
 					<th>Prescription</th>
 					<th>Patient</th>
+					<th>Patient diseases</th>
+					<th>Patient symptoms</th>
 					<th>Actions</th>
 				</tr>
 			</thead>
@@ -21,6 +23,28 @@
 					<td>{% if entity.date %}{{ entity.date|date('Y-m-d H:i:s') }}{% endif %}</td>
 					<td>{{ entity.prescription }}</td>
 					<td>{{ entity.patient }}</td>
+					<td>
+						{% if entity.disease is not null %}
+							<ul>
+							{% for disease in entity.disease %}
+								<li>
+									{{disease.name}}
+								</li>
+							{% endfor %}
+							</ul>
+						{% endif %}
+					</td>
+					<td>
+						{% if entity.disease is not null %}
+							<ul>
+							{% for disease in entity.disease %}
+								<li>
+									{{disease.tags}}
+								</li>
+							{% endfor %}
+							</ul>
+						{% endif %}
+					</td>
 					<td>
 					<ul>
 						<li>
