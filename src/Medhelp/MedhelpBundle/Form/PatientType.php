@@ -17,9 +17,12 @@ class PatientType extends AbstractType
         $builder
             ->add('firstName')
             ->add('lastName')
+            ->add('mobile')
+            ->add('pesel')
+            ->add('adress')
         ;
     }
-    
+
     /**
      * @param OptionsResolverInterface $resolver
      */
