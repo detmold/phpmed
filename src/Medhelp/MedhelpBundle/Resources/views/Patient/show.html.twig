@@ -36,10 +36,10 @@
       	</table>
     	</div>
       {{ form(delete_form) }}
-      <br />
-      <a href="{{ path('patient_edit', { 'id': entity.id }) }}">Edit</a>
-      <br/>
-      <a href="{{ path('patient') }}">Back to the list</a>
+      <div class="btn-group">
+        <a class="btn btn-default" href="{{ path('patient_edit', { 'id': entity.id }) }}">Edit</a>
+        <a class="btn btn-default" href="{{ path('patient') }}">Back to the list</a>
+      </div>
     </div>
   </div>
 </div>

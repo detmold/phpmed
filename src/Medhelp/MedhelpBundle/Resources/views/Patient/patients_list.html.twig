@@ -21,9 +21,9 @@
                 <td>{{ patient.id }}</td>
                 <td>{{ patient.firstName }}</td>
                 <td>{{ patient.lastName }}</td>
-				<td><a href="{{ path('patient_show', { 'id': patient.id }) }}">show</a></td>
-				<td><a href="{{ path('patient_edit', { 'id': patient.id }) }}">edit</a></td>
-				<td><a href="{{ path('patient_delete', { 'id': patient.id }) }}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
+				<td><a href="{{ path('patient_show', { 'id': patient.id }) }}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a></td>
+				<td><a href="{{ path('patient_edit', { 'id': patient.id }) }}"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span></a></td>
+				<td><a href="{{ path('patient_delete', { 'id': patient.id }) }}"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></td>
             </tr>
             {% endfor %}
         </tbody>
