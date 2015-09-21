@@ -2,35 +2,41 @@
 
 {% block body %}
 
-<h1>Results:</h1>
-{% for disease in diseases %}
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <h3 class="panel-title">{{ disease.name }}</h3>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8">
+      <h1>Results</h1>
+      {% for disease in diseases %}
+      <div class="panel panel-default">
+          <div class="panel-heading">
+              <h3 class="panel-title">{{ disease.name }}</h3>
+          </div>
+          <div class="panel-body">
+              <p class="text-primary">Description:</span> <span class="text-muted">{{ disease.description }}</p>
+              <p class="text-danger">Symptoms:</span> <span class="text-muted">
+                  {% for symptom in disease.symptom %}
+                      {{ symptom.name }},
+                  {% else %}
+                      No symptoms have been found.
+                  {% endfor %}
+              </p>
+              <p class="text-info">Tags:</span> <span class="text-muted">{{ disease.tags }}</p>
+          </div>
+      </div>
+
+      {% else %}
+          No diseases have been found.
+      {% endfor %}
     </div>
-    <div class="panel-body">
-        <p class="text-primary">Description:</span> <span class="text-muted">{{ disease.description }}</p>
-        <p class="text-danger">Symptoms:</span> <span class="text-muted">
-            {% for symptom in disease.symptom %}
-                {{ symptom.name }},
-            {% else %}
-                No symptoms have been found.
-            {% endfor %}
-        </p>
-        <p class="text-info">Tags:</span> <span class="text-muted">{{ disease.tags }}</p>
+    <div class="col-sm-4">
+      {% if diseases is not empty %}
+
+          {% include 'MedhelpMedhelpBundle:Diagnosis:new.html.twig' %}
+
+      {% else %}
+      {% endif %}
     </div>
+
+  </div>
 </div>
-
-{% else %}
-    No diseases have been found.
-{% endfor %}
-
-<div class="panel panel-default">
-	{% if diseases is not empty %}
-		<div class="panel panel-default">
-			{% include 'MedhelpMedhelpBundle:Diagnosis:new.html.twig' %}
-		</div>
-	{% else %}
-	{% endif %}
-
 {% endblock body %}
