@@ -15,7 +15,7 @@
                     <a href="{{ path('medhelp_medhelp_homepage') }}">Homepage</a>
                 </li>
                 {% if app.user %}
-   
+
                 <li class="{% if app.request.attributes.get('_route') == 'medhelp_medhelp_diagnosis_search' %}active{% endif %}">
                     <a href="{{ path('medhelp_medhelp_diagnosis_search') }}">Diagnose</a>
                 </li>
@@ -23,7 +23,7 @@
                     <a href="{{ path('patient') }}">Patients</a>
                 </li>
 				<li class="{% if app.request.attributes.get('_route') == 'diagnosis' %}active{% endif %}">
-                    <a href="{{ path('diagnosis') }}">Diagnose list</a>
+                    <a href="{{ path('diagnosis') }}">Diagnoses history</a>
                 </li>
                 {% endif %}
             </ul>

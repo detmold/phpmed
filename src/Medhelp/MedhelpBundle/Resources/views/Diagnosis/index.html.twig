@@ -9,8 +9,8 @@
 				<tr>
 					<th>Id</th>
 					<th>Date</th>
-					<th>Prescription</th>
 					<th>Patient</th>
+					<th><span class="pull-right">Actions</span></th>
 					<th>Patient diseases</th>
 					<th>Patient symptoms</th>
 					<th>Actions</th>
@@ -21,9 +21,12 @@
 				<tr>
 					<td><a href="{{ path('diagnosis_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
 					<td>{% if entity.date %}{{ entity.date|date('Y-m-d H:i:s') }}{% endif %}</td>
-					<td>{{ entity.prescription }}</td>
 					<td>{{ entity.patient }}</td>
 					<td>
+            <div class="btn-group pull-right">
+						  <a class="btn btn-default" href="{{ path('diagnosis_show', { 'id': entity.id }) }}">show</a>
+						  <a class="btn btn-default" href="{{ path('diagnosis_edit', { 'id': entity.id }) }}">edit</a>
+            </div>
 						{% if entity.disease is not null %}
 							<ul>
 							{% for disease in entity.disease %}
@@ -60,12 +63,5 @@
 			</tbody>
 		</table>
 	</div>
-
-        <ul>
-        <li>
-            <a href="{{ path('medhelp_medhelp_diagnosis_search') }}">
-                Create a new entry
-            </a>
-        </li>
-    </ul>
+  <a class="btn btn-primary" href="{{ path('medhelp_medhelp_diagnosis_search') }}">Create a new entry</a>
     {% endblock %}

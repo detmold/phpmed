@@ -53,18 +53,11 @@
 			</tbody>
 		</table>
 	</div>
+  {{ form(delete_form) }}
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('diagnosis') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('diagnosis_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
+  <div class="btn-group">
+    <a class="btn btn-default" href="{{ path('diagnosis_edit', { 'id': entity.id }) }}">Edit</a>
+    <a class="btn btn-default"href="{{ path('diagnosis') }}">Back to the list</a>
+  </div>
 </ul>
 {% endblock %}
