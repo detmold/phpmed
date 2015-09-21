@@ -25,16 +25,14 @@
 				<td><a href="{{ path('patient_edit', { 'id': patient.id }) }}">edit</a></td>
 				<td><a href="{{ path('patient_delete', { 'id': patient.id }) }}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
             </tr>
-            {% else %}
-                No patients have been found.
             {% endfor %}
         </tbody>
     </table>
-	
+
 	<a href="{{ path('patient_new') }}">
         <input class="btn btn-info btn-block" type="submit" value="Create a new patient">
     </a>
-	
+
 </div>
 </div>
 {% endblock body %}
