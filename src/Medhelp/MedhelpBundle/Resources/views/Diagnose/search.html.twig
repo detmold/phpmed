@@ -5,7 +5,7 @@
 {% block body %}
 <div class="container">
     <form class="form-signin" action="result" method="GET">
-        <input class="form-control" type="text" name="symptoms" placeholder="Enter patients symptoms">
+        <input id="search" class="form-control" type="text" name="symptoms" placeholder="Enter patients symptoms">
         <br />
         <input class="btn btn-info btn-block" type="submit" value="Diagnose">
     </form>
@@ -14,11 +14,18 @@
 	<span class="text-info">Known symptoms: </span>
 	<span class="text-muted">
 	{% for symptom in symptoms %}
-		{{ symptom.name }},
+		<a href="#" onclick="addSymptom('{{ symptom.name }}')">{{ symptom.name }}</a>,
 	{% else %}
 		No symptom have been found.
 	{% endfor %}
 	</span>
+
+	<script type="text/javascript">
+		var addSymptom = function(symptom) {
+			document.getElementById('search').value += symptom +';';
+		}
+	</script>
+
 	</div>
 </div>
 {% endblock body %}
