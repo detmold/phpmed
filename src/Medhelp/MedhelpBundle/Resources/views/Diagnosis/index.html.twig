@@ -10,10 +10,9 @@
 					<th>Id</th>
 					<th>Date</th>
 					<th>Patient</th>
-					<th><span class="pull-right">Actions</span></th>
 					<th>Patient diseases</th>
 					<th>Patient symptoms</th>
-					<th>Actions</th>
+					<th><span class="pull-right">Actions</span></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -23,10 +22,6 @@
 					<td>{% if entity.date %}{{ entity.date|date('Y-m-d H:i:s') }}{% endif %}</td>
 					<td>{{ entity.patient }}</td>
 					<td>
-            <div class="btn-group pull-right">
-						  <a class="btn btn-default" href="{{ path('diagnosis_show', { 'id': entity.id }) }}">show</a>
-						  <a class="btn btn-default" href="{{ path('diagnosis_edit', { 'id': entity.id }) }}">edit</a>
-            </div>
 						{% if entity.disease is not null %}
 							<ul>
 							{% for disease in entity.disease %}
@@ -49,14 +44,10 @@
 						{% endif %}
 					</td>
 					<td>
-					<ul>
-						<li>
-							<a href="{{ path('diagnosis_show', { 'id': entity.id }) }}">show</a>
-						</li>
-						<li>
-							<a href="{{ path('diagnosis_edit', { 'id': entity.id }) }}">edit</a>
-						</li>
-					</ul>
+					<div class="btn-group pull-right">
+						  <a class="btn btn-default" href="{{ path('diagnosis_show', { 'id': entity.id }) }}">show</a>
+						  <a class="btn btn-default" href="{{ path('diagnosis_edit', { 'id': entity.id }) }}">edit</a>
+					</div>
 					</td>
 				</tr>
 			{% endfor %}
