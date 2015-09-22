@@ -8,6 +8,6 @@
 /bin/
 /composer.phar
 /vendor/
-/bower_components/
+/web/bower_components/
 /web/bundles/
 /node_modules/

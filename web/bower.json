@@ -1,0 +1,25 @@
+{
+  "name": "medhelp",
+  "version": "0.0.0",
+  "authors": [
+    "detmold <detmold12@gmail.com>"
+  ],
+  "description": "medhelp project",
+  "moduleType": [
+    "amd"
+  ],
+  "keywords": [
+    "medhelp"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "tablesorter": "*"
+  }
+}
