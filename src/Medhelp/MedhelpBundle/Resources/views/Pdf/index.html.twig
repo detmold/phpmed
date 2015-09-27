@@ -5,12 +5,12 @@
         <meta charset="UTF-8"/>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="IE=edge" http-equiv="X-UA-Compatible">
+		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
     </head>
 
     <body>
     <h1>Diagnosis list</h1>
 
-    <div class="table-responsive">
 		<table class="table table-striped myTableSortable tablesorter">
 			<thead>
 				<tr>
@@ -24,7 +24,7 @@
 			<tbody>
 			{% for entity in entities %}
 				<tr>
-					<td><a href="{{ path('diagnosis_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+					<td>{{ entity.id }}</td>
 					<td>{% if entity.date %}{{ entity.date|date('Y-m-d H:i:s') }}{% endif %}</td>
 					<td>{{ entity.patient }}</td>
 					<td>
@@ -53,7 +53,7 @@
 			{% endfor %}
 			</tbody>
 		</table>
-	</div>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </body>
 
 </html>
