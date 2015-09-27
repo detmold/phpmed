@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new Medhelp\MedhelpBundle\MedhelpMedhelpBundle(),
 			new Braincrafted\Bundle\BootstrapBundle\BraincraftedBootstrapBundle(),
 			new FOS\UserBundle\FOSUserBundle(),
+			new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

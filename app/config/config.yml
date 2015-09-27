@@ -87,3 +87,10 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+knp_snappy:
+    temporary_folder: %kernel.root_dir%/web/snappy
+    pdf:
+        enabled:    true
+        binary:     /usr/local/bin/wkhtmltopdf
+        #/usr/local/bin/wkhtmltopdf "\"C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe\"" for Windows users
+        options:    []

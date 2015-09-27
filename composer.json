@@ -37,7 +37,8 @@
 		"twbs/bootstrap": "dev-master",
 		"jquery/jquery": "1.11.*",
         "friendsofsymfony/user-bundle": "~2.0@dev",
-        "ircmaxell/password-compat": "^1.0"
+        "ircmaxell/password-compat": "^1.0",
+		"knplabs/knp-snappy-bundle": "dev-master"
     },
 	
     "require-dev": {

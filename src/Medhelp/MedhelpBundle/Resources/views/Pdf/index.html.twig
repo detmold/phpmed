@@ -1,6 +1,13 @@
-{% extends '::base.html.twig' %}
+<!DOCTYPE html>
+<html>
 
-{% block body -%}
+    <head>
+        <meta charset="UTF-8"/>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    </head>
+
+    <body>
     <h1>Diagnosis list</h1>
 
     <div class="table-responsive">
@@ -12,7 +19,6 @@
 					<th>Patient</th>
 					<th>Patient diseases</th>
 					<th>Patient symptoms</th>
-					<th><span class="pull-left">Actions</span></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -43,17 +49,11 @@
 							</ul>
 						{% endif %}
 					</td>
-					<td>
-					<div class="btn-group pull-right">
-						  <a class="btn btn-default" href="{{ path('diagnosis_show', { 'id': entity.id }) }}">show</a>
-						  <a class="btn btn-default" href="{{ path('diagnosis_edit', { 'id': entity.id }) }}">edit</a>
-					</div>
-					</td>
 				</tr>
 			{% endfor %}
 			</tbody>
 		</table>
 	</div>
-  <a class="btn btn-primary" href="{{ path('medhelp_medhelp_diagnosis_search') }}">Create a new entry</a>
-  <a class="btn btn-primary" href="{{ path('medhelp_medhelp_pdf_diagnosis') }}">Export diagnosis to PDF</a>
-    {% endblock %}
+</body>
+
+</html>
