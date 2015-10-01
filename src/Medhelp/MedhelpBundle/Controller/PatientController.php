@@ -92,6 +92,7 @@ class PatientController extends Controller
     public function newAction()
     {
         $entity = new Patient();
+		$entity->setRegisterdate(new \DateTime());
         $form   = $this->createCreateForm($entity);
 
         return array(

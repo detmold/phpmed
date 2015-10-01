@@ -97,14 +97,27 @@ class DiagnosisController extends Controller
      * @Method("GET")
      * @Template()
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
-        $em = $this->getDoctrine()->getManager();
+        //$em = $this->getDoctrine()->getManager();
+		$paginator  = $this->get('knp_paginator');
+		
+		$em    = $this->get('doctrine.orm.entity_manager');
+		$dql   = "SELECT d FROM MedhelpMedhelpBundle:Diagnosis d";
+		$query = $em->createQuery($dql);
 
-        $entities = $em->getRepository('MedhelpMedhelpBundle:Diagnosis')->findAll();
+        //$entities = $em->getRepository('MedhelpMedhelpBundle:Diagnosis')->findAll();
+		$pagination = $paginator->paginate(
+			$query,
+			$request->query->getInt('page', 1)/*page number*/,
+			5 /*limit per page*/
+		);
+		
+		$entities = $query->getResult();
 
         return array(
             'entities' => $entities,
+			'pagination' => $pagination
         );
     }
     /**

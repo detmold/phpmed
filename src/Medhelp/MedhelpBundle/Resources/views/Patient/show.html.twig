@@ -21,20 +21,79 @@
     					<th>Lastname</th>
     					<td>{{ entity.lastName }}</td>
     				</tr>
-              <th>Mobile</th>
-              <td>{{ entity.mobile }}</td>
-            </tr>
-            <tr>
-              <th>Pesel</th>
-              <td>{{ entity.pesel }}</td>
-            </tr>
-            <tr>
-              <th>Adress</th>
-              <td>{{ entity.adress }}</td>
-            </tr>
+					<tr>
+					  <th>Mobile</th>
+					  <td>{{ entity.mobile }}</td>
+					</tr>
+					<tr>
+					  <th>Pesel</th>
+					  <td>{{ entity.pesel }}</td>
+					</tr>
+					<tr>
+					  <th>Adress</th>
+					  <td>{{ entity.adress }}</td>
+					</tr>
+					
+					<tr>
+					  <th>Nfz</th>
+					  <td>{{ entity.nfz }}</td>
+					</tr>
+					<tr>
+					  <th>Sex</th>
+					  <td>{{ entity.sex }}</td>
+					</tr>
+					<tr>
+					  <th>Birthday</th>
+					  <td>{{ entity.birthday|date("m/d/Y") }}</td>
+					</tr>
+					<tr>
+					  <th>Register date</th>
+					  <td>{{ entity.registerdate|date("m/d/Y") }}</td>
+					</tr>
+					<tr>
+					  <th>Person to inform</th>
+					  <td>{{ entity.person }}</td>
+					</tr>
+					<tr>
+					  <th>Nip</th>
+					  <td>{{ entity.nip }}</td>
+					</tr>
+					
+					<tr>
+						<th>Patient diagnosis</th>		
+						<td>
+							{% if entity.diagnoses is not empty %}
+								{% for diagnose in entity.diagnoses %}
+									<ul>
+									{% for disease in diagnose.disease %}
+										<li>
+											<a href="{{ path('diagnosis_show', { 'id': diagnose.id }) }}">{{disease.name}}</a>
+										</li>
+									{% endfor %}
+									</ul>
+								{% endfor %}
+							{% endif %}
+						</td>
+					</tr>		
+					<tr>			
+						<th>Patient symptoms</th>
+						<td>
+							{% if entity.diagnoses is not empty %}
+								{% for diagnose in entity.diagnoses %}
+									<ul>
+									{% for symptom in diagnose.symptom %}
+										<li>
+											{{symptom.name}}
+										</li>
+									{% endfor %}
+									</ul>
+								{% endfor %}
+							{% endif %}
+						</td>
+					</tr>
       		</tbody>
       	</table>
-    	</div>
+    </div>
       {{ form(delete_form) }}
       <div class="btn-group">
         <a class="btn btn-default" href="{{ path('patient_edit', { 'id': entity.id }) }}">Edit</a>

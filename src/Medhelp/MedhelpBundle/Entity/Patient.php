@@ -4,6 +4,7 @@
 namespace Medhelp\MedhelpBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
@@ -37,7 +38,12 @@ class Patient {
      private $mobile;
 
      /**
-     * @ORM\Column(type="integer")
+	 * @ORM\Column(type="string", length=255)
+     * @Assert\Regex(
+     *     pattern="/^((\d{3}[- ]\d{3}[- ]\d{2}[- ]\d{2})|(\d{3}[- ]\d{2}[- ]\d{2}[- ]\d{3}))$/",
+     *     match=false,
+     *     message="Accepted formats: 222-22-22-222 | 222-222-22-22 | 222 22 22 222 | 222 222 22 22 Non accepted formats: 2222222222 | XXXXXXXXXX"
+     * )
      */
      private $pesel;
 
@@ -45,6 +51,36 @@ class Patient {
      * @ORM\Column(type="string", length=255)
      */
      private $adress;
+	 
+	 /**
+     * @ORM\Column(type="string", length=3)
+     */
+     private $nfz;
+	 
+	 /**
+     * @ORM\Column(name="gender", type="string", columnDefinition="enum('m', 'f')")
+     */
+     private $sex = 'm';
+	 
+	 /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+     private $birthday;
+	 
+	 /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+     private $registerdate;
+	 
+	 /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+     private $person;
+	 
+	 /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+     private $nip;
 
     /**
      * Get id
@@ -172,7 +208,7 @@ class Patient {
     /**
      * Set pesel
      *
-     * @param integer $pesel
+     * @param string $pesel
      * @return Patient
      */
     public function setPesel($pesel)
@@ -185,7 +221,7 @@ class Patient {
     /**
      * Get pesel
      *
-     * @return integer 
+     * @return string 
      */
     public function getPesel()
     {
@@ -214,4 +250,137 @@ class Patient {
     {
         return $this->adress;
     }
+	
+	/**
+     * Set nfz
+     *
+     * @param string $nfz
+     * @return Patient
+     */
+    public function setNfz($nfz)
+    {
+        $this->nfz = $nfz;
+
+        return $this;
+    }
+
+    /**
+     * Get nfz
+     *
+     * @return string 
+     */
+    public function getNfz()
+    {
+        return $this->nfz;
+    }
+	
+	/**
+     * Set sex
+     *
+     * @param string $sex
+     * @return Patient
+     */
+    public function setSex($sex)
+    {
+        $this->sex = $sex;
+
+        return $this;
+    }
+
+    /**
+     * Get sex
+     *
+     * @return string 
+     */
+    public function getSex()
+    {
+        return $this->sex;
+    }
+	
+	/**
+	 * Set birthday
+	 *
+	 * @param date $birthday
+	 */
+	public function setBirthday($birthday)
+	{
+		$this->birthday = $birthday;
+	}
+
+	/**
+	 * Get birthday
+	 *
+	 * @return date 
+	 */
+	public function getBirthday()
+	{
+		return $this->birthday;
+	}
+	
+	/**
+	 * Set registerdate
+	 *
+	 * @param date $registerdate
+	 */
+	public function setRegisterdate($registerdate)
+	{
+		$this->registerdate = $registerdate;
+	}
+
+	/**
+	 * Get registerdate
+	 *
+	 * @return date 
+	 */
+	public function getRegisterdate()
+	{
+		return $this->registerdate;
+	}
+	
+	/**
+     * Set person
+     *
+     * @param string $person
+     * @return Patient
+     */
+    public function setPerson($person)
+    {
+        $this->person = $person;
+
+        return $this;
+    }
+
+    /**
+     * Get person
+     *
+     * @return string 
+     */
+    public function getPerson()
+    {
+        return $this->person;
+    }
+	
+	/**
+     * Set nip
+     *
+     * @param string $nip
+     * @return Patient
+     */
+    public function setNip($nip)
+    {
+        $this->nip = $nip;
+
+        return $this;
+    }
+
+    /**
+     * Get nip
+     *
+     * @return string 
+     */
+    public function getNip()
+    {
+        return $this->nip;
+    }
+
 }

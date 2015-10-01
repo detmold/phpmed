@@ -1,6 +1,12 @@
-{% extends '::base.html.twig' %}
+<!DOCTYPE html>
+<html>
 
-{% block body -%}
+    <head>
+        <meta charset="UTF-8"/>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="IE=edge" http-equiv="X-UA-Compatible">
+		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    </head>
     <h1>Diagnosis</h1>
 
     <div class="table-responsive">
@@ -39,11 +45,11 @@
 				<tr>
 					<th>Patient symptoms</th>
 					<td>
-						{% if entity.symptom is not null %}
+						{% if entity.disease is not null %}
 							<ul>
-							{% for symptom in entity.symptom %}
+							{% for disease in entity.disease %}
 								<li>
-									{{symptom.name}}
+									{{disease.tags}}
 								</li>
 							{% endfor %}
 							</ul>
@@ -53,12 +59,7 @@
 			</tbody>
 		</table>
 	</div>
-  {{ form(delete_form) }}
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</body>
 
-  <div class="btn-group">
-	<a class="btn btn-default" href="{{ path('medhelp_medhelp_pdf_diagnose', { 'id': entity.id }) }}">Export to PDF</a>
-    <a class="btn btn-default" href="{{ path('diagnosis_edit', { 'id': entity.id }) }}">Edit</a>
-    <a class="btn btn-default"href="{{ path('diagnosis') }}">Back to the list</a>
-  </div>
-</ul>
-{% endblock %}
+</html>

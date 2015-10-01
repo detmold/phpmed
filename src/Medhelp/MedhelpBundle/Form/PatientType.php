@@ -20,6 +20,23 @@ class PatientType extends AbstractType
             ->add('mobile')
             ->add('pesel')
             ->add('adress')
+			->add('nfz')
+			->add('sex', 'choice', array(
+					'choices'  => array('m' => 'male', 'f' => 'female'),
+					'required' => false,
+				))
+			->add('birthday', 'date', array(
+				'widget' => 'choice',
+				// this is actually the default format for single_text
+				'years' => range(date('Y'), date('Y') - 100),
+			))
+			->add('registerdate', 'date', array(
+				'widget' => 'choice',
+				// this is actually the default format for single_text
+				'years' => range(date('Y'), date('Y') - 20),
+			))
+			->add('person', null, array('label' => 'Person to inform', 'required' => false))
+			->add('nip', null, array('required' => false))
         ;
     }
 
