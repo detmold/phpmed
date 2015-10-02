@@ -59,38 +59,46 @@
 					  <td>{{ entity.nip }}</td>
 					</tr>
 					
+					{% if entity.diagnoses is not empty %}
 					<tr>
-						<th>Patient diagnosis</th>		
-						<td>
-							{% if entity.diagnoses is not empty %}
-								{% for diagnose in entity.diagnoses %}
-									<ul>
-									{% for disease in diagnose.disease %}
-										<li>
-											<a href="{{ path('diagnosis_show', { 'id': diagnose.id }) }}">{{disease.name}}</a>
-										</li>
-									{% endfor %}
-									</ul>
-								{% endfor %}
-							{% endif %}
-						</td>
+						<td colspan="2">
+							{% for diagnose in entity.diagnoses %}
+								<div class="row {{ cycle(['even','odd'],loop.index) }}">
+									<div class="col-md-12">
+										<div class="row">
+											<div class="col-md-6">
+												<h4>Diagnose date: {{diagnose.date|date("m/d/Y")}}</h4>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-6">
+												<div class="list-group">
+												<h5>Diseases:</h5>
+												{% for disease in diagnose.disease %}
+													<a class="list-group-item" href="{{ path('diagnosis_show', { 'id': diagnose.id }) }}">
+														<h6 class="list-group-item-heading">{{disease.name}}</h6>
+													</a>
+												{% endfor %}
+												</div>
+											</div>
+												
+											<div class="col-md-6">
+												<div class="list-group">
+												<h5>Symptoms:</h5>
+												{% for symptom in diagnose.symptom %}
+													<a class="list-group-item" href="{{ path('diagnosis_show', { 'id': diagnose.id }) }}">
+														<h6 class="list-group-item-heading">{{symptom.name}}</h6>
+													</a>
+												{% endfor %}
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							{% endfor %}
+						</td>		
 					</tr>		
-					<tr>			
-						<th>Patient symptoms</th>
-						<td>
-							{% if entity.diagnoses is not empty %}
-								{% for diagnose in entity.diagnoses %}
-									<ul>
-									{% for symptom in diagnose.symptom %}
-										<li>
-											{{symptom.name}}
-										</li>
-									{% endfor %}
-									</ul>
-								{% endfor %}
-							{% endif %}
-						</td>
-					</tr>
+					{% endif %}
       		</tbody>
       	</table>
     </div>
