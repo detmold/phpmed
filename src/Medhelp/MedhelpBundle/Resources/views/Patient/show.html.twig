@@ -62,8 +62,8 @@
 					{% if entity.diagnoses is not empty %}
 					<tr>
 						<td colspan="2">
-							{% for diagnose in entity.diagnoses %}
-								<div class="row {{ cycle(['even','odd'],loop.index) }}">
+							{% for diagnose in entity.diagnoses|reverse %}
+								<div style="margin:0;" class="row {{ cycle(['even','odd'],loop.index) }}">
 									<div class="col-md-12">
 										<div class="row">
 											<div class="col-md-6">
